@@ -31,7 +31,9 @@ async function scrape(
     console.log("prev ", numOfLaptops);
 
     const URL = `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`;
+
     console.log(URL);
+
     await page.goto(URL);
 
     console.log("loaded page");

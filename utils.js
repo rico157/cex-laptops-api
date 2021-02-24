@@ -3,7 +3,6 @@ const readcsv = require("./readcsv");
 const handleCEXData = async (data) => {
   const filtered = filterData(data);
   const info = await getInfo(filtered);
-
   return info;
 };
 

@@ -12,12 +12,11 @@ const loadData = (req, res) => {
     maxPrice = "400",
     minPrice = "200"
   } = req.query;
-  console.log(ram, drive, maxPrice, minPrice);
   scrape(ram, drive, maxPrice, minPrice)
     .then((numOfLaptops) => {
       const msg = "Scraping done";
       console.log(numOfLaptops);
-      res.send();
+      res.send(msg);
     })
     .catch(console.log);
 };
