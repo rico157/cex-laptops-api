@@ -6,7 +6,20 @@ const getLaptops = (req, res) => {
 };
 
 const loadData = (req, res) => {
-  scrape().then(() => res.send("scrap done"));
+  const {
+    ram = "8GB",
+    drive = "SSD",
+    maxPrice = "400",
+    minPrice = "200"
+  } = req.query;
+  console.log(ram, drive, maxPrice, minPrice);
+  scrape(ram, drive, maxPrice, minPrice)
+    .then((numOfLaptops) => {
+      const msg = "Scraping done";
+      console.log(numOfLaptops);
+      res.send();
+    })
+    .catch(console.log);
 };
 
 module.exports = { getLaptops, loadData };

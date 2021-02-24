@@ -24,7 +24,6 @@ const getInfo = async (data) => {
     if (cpuData === undefined) {
       return { Model: model, CPU: cpu + " not found" };
     }
-    console.log(box);
     return {
       Model: model,
       CPU: infoData[0],

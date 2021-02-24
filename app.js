@@ -1,9 +1,9 @@
 const app = require("express")();
 const { getLaptops, loadData } = require("./controllers/laptops");
 
-app.get("/", getLaptops);
+app.get("/laptops", getLaptops);
 
-app.get("/scrap", loadData);
+app.get("/loadLaptops", loadData);
 
 app.get("/portfolio", (req, res) => res.send("Portfolio Page Route"));
 

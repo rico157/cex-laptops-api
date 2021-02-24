@@ -14,6 +14,7 @@ async function scrape(
   const page = await browser.newPage();
 
   let record = 1;
+  let numOfLaptops = 0;
 
   await fs.writeFile("laptops.json", JSON.stringify([]));
 
@@ -24,12 +25,14 @@ async function scrape(
     });
 
     const oldData = JSON.parse(readData);
+    numOfLaptops = oldData.length;
 
-    console.log("prev ", oldData.length);
+    console.log("record ", record);
+    console.log("prev ", numOfLaptops);
 
-    await page.goto(
-      `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`
-    );
+    const URL = `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`;
+    console.log(URL);
+    await page.goto(URL);
 
     console.log("loaded page");
 
@@ -43,23 +46,21 @@ async function scrape(
       return await browser.close();
     }
 
-    const data = innerText.response.data.boxes.filter((box) => {
-      return box.outOfEcomStock === 0;
-    });
+    const data = innerText.response.data.boxes;
 
     const mergedArrays = data.concat(oldData);
-
-    console.log("filtered", data.length);
-    console.log("merged", mergedArrays.length);
 
     await fs.writeFile("laptops.json", JSON.stringify(mergedArrays));
 
     record = record + 50;
+
+    console.log("laptops ", data.length);
+    console.log("merged ", mergedArrays.length);
+    console.log("next record ", record);
 
     setTimeout(async () => {
       await nextPage();
     }, 5000);
   })();
 }
-
 module.exports = scrape;
