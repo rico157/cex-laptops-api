@@ -61,5 +61,5 @@ async function scrape(
     }, 5000);
   })();
 }
-scrape();
+
 module.exports = scrape;
