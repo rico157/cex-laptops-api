@@ -31,10 +31,11 @@ async function scrape(
     console.log("prev ", numOfLaptops);
 
     const URL = `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`;
+    const URLALL = `https://wss2.cex.uk.webuy.io/v3/boxes?inStockOnline=1&categoryIds=[1065]&firstRecord=${record}&count=50`;
 
-    console.log(URL);
+    console.log(URLALL);
 
-    await page.goto(URL);
+    await page.goto(URLALL);
 
     console.log("loaded page");
 
