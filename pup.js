@@ -2,12 +2,11 @@ const puppeteer = require("puppeteer");
 const fs = require("fs").promises;
 const read = require("./read");
 
-async function scrape(
-  ram = "8GB",
-  drive = "SSD",
-  maxPrice = "400",
-  minPrice = "200"
-) {
+async function scrape() {
+  // ram = "8GB",
+  // drive = "SSD",
+  // maxPrice = "400",
+  // minPrice = "200"
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"]
   });
@@ -30,7 +29,7 @@ async function scrape(
     console.log("record ", record);
     console.log("prev ", numOfLaptops);
 
-    const URL = `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`;
+    // const URL = `https://wss2.cex.uk.webuy.io/v3/boxes?q=${ram}%20${drive}&inStockOnline=1&minPrice=${minPrice}&maxPrice=${maxPrice}&categoryIds=[1065]&firstRecord=${record}&count=50`;
     const URLALL = `https://wss2.cex.uk.webuy.io/v3/boxes?inStockOnline=1&categoryIds=[1065]&firstRecord=${record}&count=50`;
 
     console.log(URLALL);

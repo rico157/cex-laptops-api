@@ -6,7 +6,7 @@ const getLaptops = (req, res) => {
 };
 
 const loadData = (req, res) => {
-  scrape(ram, drive, maxPrice, minPrice)
+  scrape()
     .then((numOfLaptops) => {
       const msg = "Scraping done";
       console.log(numOfLaptops);
