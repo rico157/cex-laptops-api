@@ -16,6 +16,7 @@ const getInfo = async (data, { sortBy = "Rank" }) => {
     const cpu = regCPU.exec(box.boxName)[1].toUpperCase();
     const model = regModel.exec(box.boxName)[1].toUpperCase();
     const price = box.sellPrice;
+    const img = box.imageUrls.large;
     const link = `https://uk.webuy.com/product-detail/?id=${box.boxId}`;
     const cpuData = csv.find((csvcpu) =>
       csvcpu.Model.toUpperCase().includes(cpu)
@@ -40,7 +41,8 @@ const getInfo = async (data, { sortBy = "Rank" }) => {
       Price: price,
       Rank: cpuData.Rank,
       Benchmark: cpuData.Benchmark,
-      Link: link
+      Link: link,
+      img
     };
   });
   return formattedData;

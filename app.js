@@ -1,5 +1,12 @@
-const app = require("express")();
+const express = require("express");
+const app = express();
+const cors = require("cors");
+
 const { getLaptops, loadData } = require("./controllers/laptops");
+
+app.use(express.json());
+
+app.use(cors());
 
 app.get("/laptops", getLaptops);
 
