@@ -8,7 +8,7 @@ const getLaptops = (req, res) => {
 const loadData = (req, res) => {
   scrape()
     .then((numOfLaptops) => {
-      const msg = "Scraping done";
+      const msg = "Scraping...";
       console.log(numOfLaptops);
       res.send(msg);
     })
