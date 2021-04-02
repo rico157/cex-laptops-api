@@ -83,7 +83,7 @@ const StyledContentWrapper = styled.div`
 `;
 
 const Laptops = ({ laptops }) => {
-  const list = laptops.slice(0, 10);
+  const list = laptops.slice(0, 50);
 
   return (
     <StyledContentWrapper>
